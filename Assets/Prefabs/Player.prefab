@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3691332249628939515}
   - component: {fileID: 3356968434031146752}
   - component: {fileID: 1195196928870096878}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,9 +75,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 1
-  canJump: 0
+  canJump: 1
   canRun: 1
-  canCrouch: 0
+  canCrouch: 1
   canHeadBob: 1
   hasFoostepSound: 1
   infiniteStamina: 1
@@ -98,15 +98,15 @@ MonoBehaviour:
   standingHeight: 1.8
   headCamOffset: 1.1
   isGrounded: 0
-  groundCheckDistance: 0.7
-  gravity: -14
+  groundCheckDistance: 0.25
+  gravity: -30
   jumpHeight: 1.5
   jumpBufferTime: 0.1
   coyoteTime: 0.1
   groundCheck: {fileID: 2653826318581089512}
   groundMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   walkBobbingSpeed: 12
   walkBobbingAmount: 0.025
   runBobbingSpeed: 16
@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 6329637986251265696}
   - component: {fileID: 2673389928988193272}
   - component: {fileID: 822065214399397487}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: PlaceholderModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -330,7 +330,7 @@ GameObject:
   - component: {fileID: 3156135386249294337}
   - component: {fileID: 6912315635737420836}
   - component: {fileID: 6251955803333424526}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -478,7 +478,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2653826318581089512}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -494,7 +494,7 @@ Transform:
   m_GameObject: {fileID: 9055534004565955431}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0, y: -0.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

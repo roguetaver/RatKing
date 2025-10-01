@@ -60,6 +60,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     //private variables
+    private Vector3 groundNormal;
     private float jumpBufferTimer;
     private float footstepTimer;
     private int currentFootstepIndex;
@@ -122,7 +123,12 @@ public class PlayerMovement : MonoBehaviour
 
         // Movement
         Vector3 move = (transform.right * x + transform.forward * z).normalized;
-        if (isGrounded) AdjustSpeedBasedOnState();
+        if (isGrounded)
+        {
+            move = Vector3.ProjectOnPlane(move, groundNormal);
+            AdjustSpeedBasedOnState();
+        }
+
         controller.Move(currentSpeed * Time.deltaTime * move);
 
         HandleJump();
@@ -230,6 +236,8 @@ public class PlayerMovement : MonoBehaviour
             Color rayColor = Physics.Raycast(raycastPosition, Vector3.down, out hit, groundCheckDistance, groundMask) ? Color.green : Color.red;
             Debug.DrawRay(raycastPosition, Vector3.down * groundCheckDistance, rayColor);
 
+            if (raycastPosition == groundCheck.position) groundNormal = hit.normal;
+
             // Check if this ray hits the ground
             if (rayColor == Color.green)
             {
@@ -237,9 +245,6 @@ public class PlayerMovement : MonoBehaviour
                 break; // As soon as one raycast hits the ground, break out
             }
         }
-
-        // Combine with CharacterController.isGrounded for additional safety
-        isGrounded = controller.isGrounded || isGrounded;
     }
 
     private void HandleJump()
